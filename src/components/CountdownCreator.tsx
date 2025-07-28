@@ -30,7 +30,8 @@ const templates = [
     color: "birthday",
     sample: "Riya's 25th Birthday!",
     gradient: "from-pink-400 to-purple-500",
-    sampleImage: birthdaySample
+    sampleImage: birthdaySample,
+    message: "Join us as we celebrate this special birthday with joy and laughter!"
   },
   {
     id: "anniversary",
@@ -39,25 +40,28 @@ const templates = [
     color: "anniversary",
     sample: "Our 5th Anniversary",
     gradient: "from-red-400 to-pink-500",
-    sampleImage: anniversarySample
+    sampleImage: anniversarySample,
+    message: "A beautiful journey together deserves a memorable celebration!"
   },
   {
     id: "graduation",
     name: "Graduation",
     icon: GraduationCap,
     color: "graduation",
-    sample: "Graduation Day 2024",
+    sample: "Graduation Day 2025",
     gradient: "from-blue-400 to-indigo-500",
-    sampleImage: graduationSample
+    sampleImage: graduationSample,
+    message: "Mark the milestone of academic success with us on this proud day!"
   },
   {
     id: "newyear",
     name: "New Year",
     icon: PartyPopper,
     color: "newyear",
-    sample: "New Year 2025",
+    sample: "New Year 2026",
     gradient: "from-yellow-400 to-orange-500",
-    sampleImage: newyearSample
+    sampleImage: newyearSample,
+    message: "Ring in the New Year with celebration, joy, and good vibes!"
   }
 ];
 
@@ -78,6 +82,10 @@ interface CountdownData {
   recurringInterval: string;
   emailNotifications: boolean;
 }
+
+const [titleEdited, setTitleEdited] = useState(false);
+const [titleEdited, setTitleEdited] = useState(false);
+const [descriptionEdited, setDescriptionEdited] = useState(false);
 
 export function CountdownCreator() {
   const navigate = useNavigate();
@@ -110,8 +118,9 @@ export function CountdownCreator() {
     setFormData(prev => ({
       ...prev,
       template: templateId,
-      title: prev.title || template?.sample || "",
-      mediaUrl: !prev.mediaFile ? template?.sampleImage || "" : prev.mediaUrl
+      title: !titleEdited ? (template?.sample || "") : prev.title,
+      description: !descriptionEdited ? (template?.message || "") : prev.description,
+      mediaUrl: !prev.mediaFile ? (template?.sampleImage || "") : prev.mediaUrl
     }));
   };
 
@@ -391,7 +400,10 @@ export function CountdownCreator() {
                     id="description"
                     placeholder="Join us at 7PM for the celebration!"
                     value={formData.description}
-                    onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+                    onChange={(e) => {
+                      setDescriptionEdited(true);
+                      setFormData(prev => ({ ...prev, description: e.target.value }))
+                    }}
                     rows={3}
                   />
                 </div>
