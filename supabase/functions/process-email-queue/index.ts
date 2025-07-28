@@ -203,7 +203,7 @@ const handler = async (req: Request): Promise<Response> => {
         // Send email using Resend
         if (resendApiKey) {
           const emailResult = await resend.emails.send({
-            from: "Countdown App <notifications@resend.dev>",
+            from: "FinalTick App <notifications@resend.dev>",
             to: [notification.email],
             subject: subject,
             html: emailHtml,
