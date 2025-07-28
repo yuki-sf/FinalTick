@@ -113,7 +113,7 @@ export function CountdownCreator() {
       ...prev,
       template: templateId,
       title: !titleEdited ? (template?.sample || "") : prev.title,
-      mediaUrl: !prev.mediaUrl ? template?.sampleImage || "" : prev.mediaUrl
+      mediaUrl: !prev.mediaFile ? template?.sampleImage || "" : prev.mediaUrl
     }));
   };
 
