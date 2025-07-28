@@ -84,7 +84,6 @@ interface CountdownData {
 }
 
 const [titleEdited, setTitleEdited] = useState(false);
-const [titleEdited, setTitleEdited] = useState(false);
 const [descriptionEdited, setDescriptionEdited] = useState(false);
 
 export function CountdownCreator() {
