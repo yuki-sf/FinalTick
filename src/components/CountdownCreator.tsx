@@ -321,7 +321,10 @@ export function CountdownCreator() {
                     id="title"
                     placeholder={selectedTemplate?.sample}
                     value={formData.title}
-                    onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
+                    onChange={(e) => {
+                      setTitleEdited(true);
+                      setFormData(prev => ({ ...prev, title: e.target.value }));
+                    }}
                     className="text-lg"
                   />
                 </div>
